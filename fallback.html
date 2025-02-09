@@ -40,6 +40,8 @@
     </style>
     <script>
         function redirectToAppOrStore() {
+            console.log("Starting deep link redirection...");
+
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
             const params = new URLSearchParams(window.location.search);
             const deepLinkPath = params.get("path") || "";
@@ -48,27 +50,34 @@
             const androidStore = "https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen&hl=en";
             const iosStore = "https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057";
 
+            console.log("Detected device:", userAgent);
+            console.log("Deep Link:", deepLink);
+
             let redirected = false;
 
             // Detect iOS
             if (/iPhone|iPad|iPod/.test(userAgent)) {
+                console.log("Redirecting to App Store...");
                 window.location.href = iosStore;
                 redirected = true;
             } 
             // Detect Android
             else if (/android/i.test(userAgent)) {
+                console.log("Redirecting to Play Store...");
                 window.location.href = androidStore;
                 redirected = true;
             } 
 
             // Try opening the deep link in 1.5 sec (for mobile browsers)
             setTimeout(() => {
+                console.log("Attempting to open deep link:", deepLink);
                 window.location.href = deepLink;
             }, 1500);
 
             // Show manual buttons if redirection doesn't happen
             setTimeout(() => {
                 if (!redirected) {
+                    console.log("Showing fallback install buttons...");
                     document.getElementById("fallback-ui").style.display = "block";
                 }
             }, 2000);
