@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        function redirectToAppOrStore() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const deepLink = "waiyyakanastaeen.site" + window.location.search.replace("?path=", ""); 
+            const androidStore = "https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen";
+            const iosStore = "https://apps.apple.com/app/idYOUR_APP_ID";
+
+            // Detect iOS
+            if (/iPhone|iPad|iPod/.test(userAgent)) {
+                window.location.href = iosStore;
+            } 
+            // Detect Android
+            else if (/android/i.test(userAgent)) {
+                window.location.href = androidStore;
+            } 
+            // If desktop, just show a message
+            else {
+                document.getElementById("message").innerHTML = "Please open this link on your phone.";
+            }
+
+            // Try opening the deep link
+            setTimeout(() => {
+                window.location.href = deepLink;
+            }, 2000);
+        }
+
+        window.onload = redirectToAppOrStore;
+    </script>
+</head>
+<body>
+    <h2 id="message">Redirecting to the app...</h2>
+</body>
+</html>
