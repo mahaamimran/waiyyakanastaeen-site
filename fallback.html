@@ -4,29 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #008080; /* Teal Theme */
+            color: white;
+            padding: 20px;
+        }
+        h2 {
+            margin-top: 50px;
+        }
+        .container {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            color: black;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        .button {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 12px;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .button.android { background: #3ddc84; } /* Play Store Green */
+        .button.ios { background: #007aff; } /* iOS Blue */
+        .button:hover { opacity: 0.8; }
+    </style>
     <script>
         function redirectToAppOrStore() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            const deepLink = "waiyyakanastaeen.site" + window.location.search.replace("?path=", ""); 
-            const androidStore = "https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen";
-            const iosStore = "https://apps.apple.com/app/idYOUR_APP_ID";
+            const params = new URLSearchParams(window.location.search);
+            const deepLinkPath = params.get("path") || "";
+            const deepLink = "https://waiyyakanastaeen.site" + deepLinkPath;
+
+            const androidStore = "https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen&hl=en";
+            const iosStore = "https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057";
+
+            let redirected = false;
 
             // Detect iOS
             if (/iPhone|iPad|iPod/.test(userAgent)) {
                 window.location.href = iosStore;
+                redirected = true;
             } 
             // Detect Android
             else if (/android/i.test(userAgent)) {
                 window.location.href = androidStore;
+                redirected = true;
             } 
-            // If desktop, just show a message
-            else {
-                document.getElementById("message").innerHTML = "Please open this link on your phone.";
-            }
 
-            // Try opening the deep link
+            // Try opening the deep link in 1.5 sec (for mobile browsers)
             setTimeout(() => {
                 window.location.href = deepLink;
+            }, 1500);
+
+            // Show manual buttons if redirection doesn't happen
+            setTimeout(() => {
+                if (!redirected) {
+                    document.getElementById("fallback-ui").style.display = "block";
+                }
             }, 2000);
         }
 
@@ -34,6 +78,12 @@
     </script>
 </head>
 <body>
-    <h2 id="message">Redirecting to the app...</h2>
+    <h2>Redirecting to the app...</h2>
+
+    <div id="fallback-ui" class="container" style="display: none;">
+        <p>If you are not redirected, please install the app:</p>
+        <a href="https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen&hl=en" class="button android">Download for Android</a>
+        <a href="https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057" class="button ios">Download for iOS</a>
+    </div>
 </body>
 </html>
