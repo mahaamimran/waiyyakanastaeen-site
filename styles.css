@@ -1,0 +1,66 @@
+/* styles.css */
+
+body {
+    font-family: 'Lexend', Arial, sans-serif;
+    text-align: center;
+    background-color: #008080;
+    color: white;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h2 {
+    margin-top: 50px;
+    font-size: 2em;
+  }
+  
+  /* Fallback container: no white background, centered and animated */
+  .fallback-container {
+    margin-top: 40px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease-out forwards;
+  }
+  
+  .fallback-text {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+  }
+  
+  /* Buttons container */
+  .buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* Button styling: remove extra background from text if needed */
+  .button {
+    text-decoration: none;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  
+  .button:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  
+  /* Logo image styling */
+  .logo {
+    width: 150px;
+    height: auto;
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

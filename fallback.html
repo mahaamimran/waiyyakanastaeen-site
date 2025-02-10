@@ -1,98 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #008080; /* Teal Theme */
-            color: white;
-            padding: 20px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirecting...</title>
+  <!-- Load Lexend from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    function redirectToAppOrStore() {
+      const queryString = window.location.search;
+      // Construct the deep link (if your app uses universal links, it should work correctly on mobile)
+      const deepLink = "https://waiyyakanastaeen.site/dua" + queryString;
+  
+      const androidStore = "https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen";
+      const iosStore = "https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057";
+  
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      console.log("User Agent:", userAgent);
+  
+      // Check if the device is mobile (iOS or Android)
+      const isMobile = /iPhone|iPad|iPod|android/i.test(userAgent);
+  
+      if (isMobile) {
+        // Attempt deep linking after 1.5 seconds
+        setTimeout(() => {
+          window.location.href = deepLink;
+        }, 1500);
+  
+        // Redirect to the appropriate store after 3 seconds as a fallback
+        if (/iPhone|iPad|iPod/.test(userAgent)) {
+          console.log("Detected iOS, redirecting to App Store");
+          setTimeout(() => {
+            window.location.href = iosStore;
+          }, 3000);
+        } else if (/android/i.test(userAgent)) {
+          console.log("Detected Android, redirecting to Play Store");
+          setTimeout(() => {
+            window.location.href = androidStore;
+          }, 3000);
         }
-        h2 {
-            margin-top: 50px;
-        }
-        .container {
-            margin-top: 20px;
-            padding: 20px;
-            background: white;
-            color: black;
-            border-radius: 8px;
-            display: inline-block;
-        }
-        .button {
-            display: block;
-            width: 200px;
-            margin: 10px auto;
-            padding: 12px;
-            font-size: 16px;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-        .button.android { background: #3ddc84; } /* Play Store Green */
-        .button.ios { background: #007aff; } /* iOS Blue */
-        .button:hover { opacity: 0.8; }
-    </style>
-    <script>
-        function redirectToAppOrStore() {
-            console.log("Starting deep link redirection...");
-
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            const params = new URLSearchParams(window.location.search);
-            const deepLinkPath = params.get("path") || "";
-            const deepLink = "https://waiyyakanastaeen.site" + deepLinkPath;
-
-            const androidStore = "https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen&hl=en";
-            const iosStore = "https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057";
-
-            console.log("Detected device:", userAgent);
-            console.log("Deep Link:", deepLink);
-
-            let redirected = false;
-
-            // Detect iOS
-            if (/iPhone|iPad|iPod/.test(userAgent)) {
-                console.log("Redirecting to App Store...");
-                window.location.href = iosStore;
-                redirected = true;
-            } 
-            // Detect Android
-            else if (/android/i.test(userAgent)) {
-                console.log("Redirecting to Play Store...");
-                window.location.href = androidStore;
-                redirected = true;
-            } 
-
-            // Try opening the deep link in 1.5 sec (for mobile browsers)
-            setTimeout(() => {
-                console.log("Attempting to open deep link:", deepLink);
-                window.location.href = deepLink;
-            }, 1500);
-
-            // Show manual buttons if redirection doesn't happen
-            setTimeout(() => {
-                if (!redirected) {
-                    console.log("Showing fallback install buttons...");
-                    document.getElementById("fallback-ui").style.display = "block";
-                }
-            }, 2000);
-        }
-
-        window.onload = redirectToAppOrStore;
-    </script>
+      } else {
+        // For desktop or non-mobile, show fallback UI (or display a message)
+        console.log("Non-mobile device detected, showing fallback UI.");
+        document.getElementById("fallback-ui").style.display = "flex";
+      }
+    }
+  
+    window.onload = redirectToAppOrStore;
+  </script>
+  
 </head>
 <body>
-    <h2>Redirecting to the app...</h2>
-
-    <div id="fallback-ui" class="container" style="display: none;">
-        <p>If you are not redirected, please install the app:</p>
-        <a href="https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen&hl=en" class="button android">Download for Android</a>
-        <a href="https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057" class="button ios">Download for iOS</a>
+  <h2>Redirecting to the app...</h2>
+  
+  <!-- Fallback UI without white background for the text -->
+  <div id="fallback-ui" class="fallback-container">
+    <p class="fallback-text">If you are not redirected, please install the app:</p>
+    <div class="buttons">
+      <a href="https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen" class="button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store" class="logo">
+      </a>
+      <a href="https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057" class="button">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="logo">
+      </a>
     </div>
+  </div>
 </body>
 </html>
