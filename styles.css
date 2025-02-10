@@ -14,10 +14,9 @@ body {
     font-size: 2em;
   }
   
-  /* Fallback container: no white background, centered and animated */
   .fallback-container {
     margin-top: 40px;
-    display: none;
+    display: none; /* Hidden until needed */
     flex-direction: column;
     align-items: center;
     animation: fadeIn 1s ease-out forwards;
@@ -28,14 +27,12 @@ body {
     font-size: 1.2em;
   }
   
-  /* Buttons container */
   .buttons {
     display: flex;
     gap: 20px;
     justify-content: center;
   }
   
-  /* Button styling: remove extra background from text if needed */
   .button {
     text-decoration: none;
     transition: transform 0.3s, opacity 0.3s;
@@ -46,13 +43,11 @@ body {
     transform: scale(1.05);
   }
   
-  /* Logo image styling */
   .logo {
     width: 150px;
     height: auto;
   }
   
-  /* Fade-in animation */
   @keyframes fadeIn {
     from {
       opacity: 0;

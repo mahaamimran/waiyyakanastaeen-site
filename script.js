@@ -9,16 +9,16 @@ function redirectToAppOrStore() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
     console.log("User Agent:", userAgent);
     
-    // Check if the device is mobile
+    // Check if device is mobile
     const isMobile = /iPhone|iPad|iPod|android/i.test(userAgent);
     
     if (isMobile) {
-      // Attempt deep linking after 1.5 seconds
+      // Attempt to open the deep link after 1.5 seconds
       setTimeout(() => {
         window.location.href = deepLink;
       }, 1500);
     
-      // For iOS and Android, redirect to the store after 3 seconds as a fallback
+      // As a fallback, redirect to the appropriate store after 3 seconds
       if (/iPhone|iPad|iPod/.test(userAgent)) {
         console.log("Detected iOS, redirecting to App Store");
         setTimeout(() => {
@@ -31,6 +31,7 @@ function redirectToAppOrStore() {
         }, 3000);
       }
     } else {
+      // For non-mobile devices, show the fallback UI
       console.log("Non-mobile device detected, showing fallback UI.");
       document.getElementById("fallback-ui").style.display = "flex";
     }
