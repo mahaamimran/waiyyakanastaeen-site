@@ -8,54 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
   <!-- Link to external CSS -->
   <link rel="stylesheet" href="styles.css">
-  <script>
-    function redirectToAppOrStore() {
-      const queryString = window.location.search;
-      // Construct the deep link (if your app uses universal links, it should work correctly on mobile)
-      const deepLink = "https://waiyyakanastaeen.site/dua" + queryString;
-  
-      const androidStore = "https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen";
-      const iosStore = "https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057";
-  
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      console.log("User Agent:", userAgent);
-  
-      // Check if the device is mobile (iOS or Android)
-      const isMobile = /iPhone|iPad|iPod|android/i.test(userAgent);
-  
-      if (isMobile) {
-        // Attempt deep linking after 1.5 seconds
-        setTimeout(() => {
-          window.location.href = deepLink;
-        }, 1500);
-  
-        // Redirect to the appropriate store after 3 seconds as a fallback
-        if (/iPhone|iPad|iPod/.test(userAgent)) {
-          console.log("Detected iOS, redirecting to App Store");
-          setTimeout(() => {
-            window.location.href = iosStore;
-          }, 3000);
-        } else if (/android/i.test(userAgent)) {
-          console.log("Detected Android, redirecting to Play Store");
-          setTimeout(() => {
-            window.location.href = androidStore;
-          }, 3000);
-        }
-      } else {
-        // For desktop or non-mobile, show fallback UI (or display a message)
-        console.log("Non-mobile device detected, showing fallback UI.");
-        document.getElementById("fallback-ui").style.display = "flex";
-      }
-    }
-  
-    window.onload = redirectToAppOrStore;
-  </script>
-  
+  <!-- Link to external JavaScript file -->
+  <script src="script.js" defer></script>
 </head>
 <body>
   <h2>Redirecting to the app...</h2>
-  
-  <!-- Fallback UI without white background for the text -->
+  <!-- Fallback UI -->
   <div id="fallback-ui" class="fallback-container">
     <p class="fallback-text">If you are not redirected, please install the app:</p>
     <div class="buttons">
