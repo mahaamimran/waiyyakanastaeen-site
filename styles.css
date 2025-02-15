@@ -1,61 +1,123 @@
-/* styles.css */
+/* Reset default margins & padding, ensure full height */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
 body {
-    font-family: 'Lexend', Arial, sans-serif;
-    text-align: center;
-    background-color: #008080;
-    color: white;
-    margin: 0;
-    padding: 20px;
+  min-height: 100vh; /* Ensure the body spans the full viewport height */
+  font-family: 'Lexend', Arial, sans-serif;
+  background: linear-gradient(to bottom, #2d9481, #3FC3AA);
+  color: white;
+  text-align: center;
+}
+
+/* Container for the main content */
+.container {
+  padding: 20px;
+}
+
+/* Header with a small logo & brand text side by side */
+.header {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Space between logo and text */
+}
+
+.main-logo {
+  width: 90px;  /* Small logo size */
+  height: auto;
+}
+
+/* Text container for brand title & tagline */
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* or center if you prefer centered text */
+}
+
+.brand-title {
+  font-size: 2.6em; /* Larger brand title */
+  margin: 0;
+  font-weight: 700;
+}
+
+.tagline {
+  font-size: 1.1em;
+  margin: 4px 0 0;
+  color: #ffffffcc; /* Slightly transparent white */
+}
+
+/* "Redirecting" section */
+.redirect-section h2 {
+  font-size: 1.8em;
+  margin-top: 30px;
+}
+
+/* Spinner for loading indication */
+.spinner {
+  margin: 20px auto 0;
+  border: 6px solid #fff;
+  border-top: 6px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fallback container hidden until triggered in script.js */
+.fallback-container {
+  margin-top: 50px;
+  display: none; /* Hidden until needed */
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.fallback-text {
+  margin-bottom: 25px;
+  font-size: 1.2em;
+}
+
+/* Store badges container */
+.buttons {
+  display: flex;
+  gap: 30px; /* More spacing between badges */
+  justify-content: center;
+}
+
+.button {
+  text-decoration: none;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* Store badges */
+.store-logo {
+  width: 160px; /* Slightly larger for easier tapping on mobile */
+  height: auto;
+}
+
+/* Fade-in animation for fallback */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  h2 {
-    margin-top: 50px;
-    font-size: 2em;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .fallback-container {
-    margin-top: 40px;
-    display: none; /* Hidden until needed */
-    flex-direction: column;
-    align-items: center;
-    animation: fadeIn 1s ease-out forwards;
-  }
-  
-  .fallback-text {
-    margin-bottom: 20px;
-    font-size: 1.2em;
-  }
-  
-  .buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .button {
-    text-decoration: none;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-  
-  .button:hover {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-  
-  .logo {
-    width: 150px;
-    height: auto;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}

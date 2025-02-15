@@ -5,27 +5,38 @@ function redirectToAppOrStore() {
   const isAndroid = /android/i.test(userAgent);
   const isIOS = /iPhone|iPad|iPod/.test(userAgent);
 
+  // If not iOS or Android, show fallback immediately
   if (!isAndroid && !isIOS) {
+    hideSpinner();
     showFallback();
     return;
   }
 
-  // Simulate a user click by creating an anchor element and triggering click()
-  let storeUrl = "";
-  if (isIOS) {
-    storeUrl = iosStore;
-  } else if (isAndroid) {
-    storeUrl = androidStore;
-  }
-
+  // Attempt to redirect user to store (simulate user click)
   const link = document.createElement("a");
-  link.href = storeUrl;
+  link.href = isIOS ? iosStore : androidStore;
   document.body.appendChild(link);
   link.click();
+
+  // After 2 seconds, hide the spinner and show fallback
+  setTimeout(() => {
+    hideSpinner();
+    showFallback();
+  }, 2000);
+}
+
+function hideSpinner() {
+  const spinner = document.querySelector(".spinner");
+  if (spinner) {
+    spinner.style.display = "none";
+  }
 }
 
 function showFallback() {
-  document.getElementById("fallback-ui").style.display = "flex";
+  const fallbackUI = document.getElementById("fallback-ui");
+  if (fallbackUI) {
+    fallbackUI.style.display = "flex";
+  }
 }
 
 window.onload = redirectToAppOrStore;
