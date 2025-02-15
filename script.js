@@ -8,7 +8,7 @@ function redirectToAppOrStore() {
   sessionStorage.setItem('redirectAttempted', 'true');
 
   const queryString = window.location.search;
-  const deepLink = "waiyyakanastaeen://dua" + queryString; // Change to your custom scheme
+  const deepLink = "waiyyakanastaeen.site" + queryString; // Change to your custom scheme
   const androidStore = "https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen";
   const iosStore = "https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057";
   const userAgent = navigator.userAgent;
