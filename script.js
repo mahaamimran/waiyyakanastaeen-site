@@ -6,16 +6,22 @@ function redirectToAppOrStore() {
   const isIOS = /iPhone|iPad|iPod/.test(userAgent);
 
   if (!isAndroid && !isIOS) {
-      showFallback();
-      return;
+    showFallback();
+    return;
   }
 
-  // Directly redirect to the App Store or Play Store
+  // Simulate a user click by creating an anchor element and triggering click()
+  let storeUrl = "";
   if (isIOS) {
-      window.location.href = iosStore;
+    storeUrl = iosStore;
   } else if (isAndroid) {
-      window.location.href = androidStore;
+    storeUrl = androidStore;
   }
+
+  const link = document.createElement("a");
+  link.href = storeUrl;
+  document.body.appendChild(link);
+  link.click();
 }
 
 function showFallback() {
