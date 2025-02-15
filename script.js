@@ -1,40 +1,40 @@
 function redirectToAppOrStore() {
-  // Check if redirection has already been attempted
-  if (sessionStorage.getItem('redirectAttempted')) {
-      showFallback();
-      return;
-  }
-
-  sessionStorage.setItem('redirectAttempted', 'true');
-
   const queryString = window.location.search;
-  const deepLink = "waiyyakanastaeen.site" + queryString; // Change to your custom scheme
+  const deepLink = "waiyyakanastaeen.site" + queryString; 
   const androidStore = "https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen";
   const iosStore = "https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057";
   const userAgent = navigator.userAgent;
-  const isMobile = /iPhone|iPad|iPod|android/i.test(userAgent);
+  const isAndroid = /android/i.test(userAgent);
+  const isIOS = /iPhone|iPad|iPod/.test(userAgent);
 
-  if (!isMobile) {
+  if (!isAndroid && !isIOS) {
       showFallback();
       return;
   }
 
-  // Attempt to open the app
-  const now = new Date().getTime();
+  const start = new Date().getTime();
+  
+  if (isIOS) {
+      window.location.href = deepLink;
+  } else {
+      // Use an iframe for Android to attempt opening the app silently
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = deepLink;
+      document.body.appendChild(iframe);
+  }
+
+  // If the app is not installed, redirect to the store
   setTimeout(() => {
-      if (new Date().getTime() - now < 2000) {
-          // If the user is still on this page, it means the app did not open. Redirect to store.
-          if (/iPhone|iPad|iPod/.test(userAgent)) {
+      const now = new Date().getTime();
+      if (now - start < 2000) {
+          if (isIOS) {
               window.location.href = iosStore;
-          } else if (/android/i.test(userAgent)) {
+          } else if (isAndroid) {
               window.location.href = androidStore;
-          } else {
-              showFallback();
           }
       }
-  }, 1500); // Check if app opened after 1.5 seconds
-
-  window.location.href = deepLink;
+  }, 1000); // Reduced timeout to 1 second for faster redirection
 }
 
 function showFallback() {
