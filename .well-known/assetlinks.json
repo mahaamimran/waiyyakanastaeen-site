@@ -3,7 +3,7 @@
         "relation": ["delegate_permission/common.handle_all_urls"],
         "target": {
             "namespace": "android_app",
-            "package_name": "com.example.walyyaka_nastaeen",
+            "package_name": "com.alhuda.duas.iyykanastaeen",
             "sha256_cert_fingerprints": ["29:1C:46:4E:65:A1:47:9E:50:C0:05:38:7A:F0:A0:6B:7A:C6:B0:2A:06:02:79:46:95:42:A8:23:4C:CD:33:11"]
         }
     }
