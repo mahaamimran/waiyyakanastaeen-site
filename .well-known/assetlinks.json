@@ -4,7 +4,7 @@
         "target": {
             "namespace": "android_app",
             "package_name": "com.example.walyyaka_nastaeen",
-            "sha256_cert_fingerprints": ["47:CD:19:46:C6:FF:01:B4:BD:FA:65:4B:AE:F7:3A:A0:36:AD:CC:44:4B:88:6F:66:EA:A3:8A:59:92:30:FF:F4"]
+            "sha256_cert_fingerprints": ["29:1C:46:4E:65:A1:47:9E:50:C0:05:38:7A:F0:A0:6B:7A:C6:B0:2A:06:02:79:46:95:42:A8:23:4C:CD:33:11"]
         }
     }
 ]
