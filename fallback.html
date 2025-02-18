@@ -1,67 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="assets/logo.png" type="image/x-icon">
-  <title>Wa Iyyaka Nastaeen</title>
-  <!-- Load Lexend from Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-  <!-- Link to external CSS -->
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Link to external JavaScript file -->
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <div class="container">
-    <header class="header">
-      <!-- Small Logo to the left -->
-      <img src="assets/logo.png" alt="Wa Iyyaka Nastaeen Logo" class="main-logo" />
-      
-      <!-- Title & Tagline -->
-      <div class="text-container">
-        <h1 class="brand-title">Wa Iyyaka Nastaeen</h1>
-        <p class="tagline">YOUR DAILY AZKAAR IN ONE PLACE</p>
-      </div>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="assets/logo.png" type="image/x-icon" />
+    <title>Wa Iyyaka Nastaeen</title>
+    <!-- Load Lexend from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Link to external JavaScript file -->
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="redirect-section">
+        <h2>Redirecting to the app...</h2>
+        <!-- Spinner shown immediately -->
+        <div class="spinner"></div>
+      </section>
 
-    <section class="redirect-section">
-      <h2>Redirecting to the app...</h2>
-      <!-- Spinner shown immediately -->
-      <div class="spinner"></div>
-    </section>
-
-    <!-- Fallback UI: shown if redirection fails or after 2s -->
-    <section id="fallback-ui" class="fallback-container">
-      <p class="fallback-text">
-        If the app doesn’t open automatically, please install the app:
-      </p>
-      <div class="buttons">
-        <a
-          href="https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen"
-          class="button"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-            alt="Google Play Store"
-            class="store-logo"
-          />
-        </a>
-        <a
-          href="https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057"
-          class="button"
-        >
-          <img
-            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-            alt="App Store"
-            class="store-logo"
-          />
-        </a>
-      </div>
-    </section>
-  </div>
-</body>
+      <!-- Fallback UI: shown if redirection fails or after 2s -->
+      <section id="fallback-ui" class="fallback-container">
+        <p class="fallback-text">
+          If the app doesn’t open automatically, please install the app:
+        </p>
+        <div class="buttons">
+          <a
+            href="https://play.google.com/store/apps/details?id=com.alhuda.duas.iyykanastaeen"
+            class="button"
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+              alt="Google Play Store"
+              class="store-logo"
+            />
+          </a>
+          <a
+            href="https://apps.apple.com/pk/app/wa-iyyaka-nastaeen/id972441057"
+            class="button"
+          >
+            <img
+              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              alt="App Store"
+              class="store-logo"
+            />
+          </a>
+        </div>
+      </section>
+    </div>
+  </body>
 </html>
