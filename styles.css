@@ -1,4 +1,3 @@
-/* Reset default margins & padding, ensure full height */
 html,
 body {
   margin: 0;
@@ -7,53 +6,43 @@ body {
 }
 
 body {
-  min-height: 100vh; /* Ensure the body spans the full viewport height */
+  min-height: 100vh;
   font-family: 'Lexend', Arial, sans-serif;
-
-  /* Fallback color (in case the gradient isn’t supported) */
   background-color: #2d9481;
-
-  /* Vendor-prefixed gradients for broader support */
   background: -webkit-linear-gradient(top, #2d9481 0%, #3fc3aa 100%);
   background: -moz-linear-gradient(top, #2d9481 0%, #3fc3aa 100%);
   background: linear-gradient(to bottom, #2d9481 0%, #3fc3aa 100%);
-
-  /* Optional: fix background in place and avoid repetition */
   background-attachment: fixed;
   background-repeat: no-repeat;
-
   color: white;
   text-align: center;
 }
 
-/* Container for the main content */
 .container {
-  padding: 60px 20px 20px; 
+  padding: 60px 20px 20px;
 }
 
-/* Header with a small logo & brand text side by side */
 .header {
   margin-top: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px; /* Space between logo and text */
+  gap: 20px;
 }
 
 .main-logo {
-  width: 90px; /* Small logo size */
+  width: 90px;
   height: auto;
 }
 
-/* Text container for brand title & tagline */
 .text-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Or center if you prefer centered text */
+  align-items: flex-start;
 }
 
 .brand-title {
-  font-size: 2.6em; /* Larger brand title */
+  font-size: 2.6em;
   margin: 0;
   font-weight: 700;
 }
@@ -61,16 +50,15 @@ body {
 .tagline {
   font-size: 1.1em;
   margin: 4px 0 0;
-  color: #ffffffcc; /* Slightly transparent white */
+  color: #ffffffcc;
 }
 
-/* "Redirecting" section */
+
 .redirect-section h2 {
   font-size: 1.8em;
   margin-top: 30px;
 }
 
-/* Spinner for loading indication */
 .spinner {
   margin: 20px auto 0;
   border: 6px solid #fff;
@@ -85,15 +73,15 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
-/* Fallback container hidden until triggered in script.js */
 .fallback-container {
   margin-top: 10px;
-  display: none; /* Hidden until needed */
+  display: none;
   flex-direction: column;
   align-items: center;
   animation: fadeIn 1s ease-out forwards;
@@ -104,14 +92,12 @@ body {
   font-size: 1.2em;
 }
 
-/* Store badges container */
 .buttons {
   display: flex;
-  gap: 30px; /* Spacing between badges */
+  gap: 30px;
   justify-content: center;
 }
 
-/* Button styles */
 .button {
   text-decoration: none;
   transition: transform 0.3s, opacity 0.3s;
@@ -122,28 +108,26 @@ body {
   transform: scale(1.05);
 }
 
-/* Store badge images */
 .store-logo {
-  width: 160px; /* Larger for easier tapping on mobile */
+  width: 160px;
   height: auto;
 }
 
-/* Fade-in animation for fallback */
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Responsive styling for smaller devices */
 @media (max-width: 600px) {
   .buttons {
     flex-direction: column;
-    gap: 20px; /* Adjust spacing between vertically stacked buttons */
+    gap: 20px;
   }
 }

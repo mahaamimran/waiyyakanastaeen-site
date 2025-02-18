@@ -5,20 +5,20 @@ function redirectToAppOrStore() {
   const isAndroid = /android/i.test(userAgent);
   const isIOS = /iPhone|iPad|iPod/.test(userAgent);
 
-  // If not iOS or Android, show fallback immediately
+  // if not iOS or Android, show fallback immediately
   if (!isAndroid && !isIOS) {
     hideSpinner();
     showFallback();
     return;
   }
 
-  // Attempt to redirect user to store (simulate user click)
+  // attempt to redirect user to store (simulate user click)
   const link = document.createElement("a");
   link.href = isIOS ? iosStore : androidStore;
   document.body.appendChild(link);
   link.click();
 
-  // After 2 seconds, hide the spinner and show fallback
+  // after 2 seconds, hide the spinner and show fallback
   setTimeout(() => {
     hideSpinner();
     showFallback();
